@@ -19,4 +19,9 @@ const userSchema = new mongoose.Schema({
         enum: ["admin", "customer"],
         default: "customer" },
 });
+export interface UserPayload {
+    id: string;
+    email: string;
+    role: string;
+}
 export const User = mongoose.model("User", userSchema);

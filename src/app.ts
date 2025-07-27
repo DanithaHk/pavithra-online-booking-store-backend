@@ -2,6 +2,8 @@ import express, { Express } from "express";
 import cors from "cors";
 import authRoutes from "./routes/auth.routes";
 import {authMiddleware} from "./middleware/auth.middleware";
+import bookRoutes from "./routes/book.routes";
+import adminRoutes from "./routes/admin.routes";
 
 const app: Express = express();
 
@@ -24,6 +26,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/book",authMiddleware, bookRoutes);
+app.use("/api/admin",authMiddleware,adminRoutes);
 
 
 export default app;
