@@ -4,6 +4,7 @@ import authRoutes from "./routes/auth.routes";
 import {authMiddleware} from "./middleware/auth.middleware";
 import bookRoutes from "./routes/book.routes";
 import adminRoutes from "./routes/admin.routes";
+import userRoutes from "./routes/user.routes";
 
 const app: Express = express();
 
@@ -28,6 +29,7 @@ app.use(cors(corsOptions));
 app.use("/api/auth", authRoutes);
 app.use("/api/book",authMiddleware, bookRoutes);
 app.use("/api/admin",authMiddleware,adminRoutes);
+app.use("/api/admin/users",authMiddleware,userRoutes);
 
 
 export default app;

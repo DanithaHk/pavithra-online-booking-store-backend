@@ -1,5 +1,4 @@
-import {User} from "../model/user.model";
-
+import { User } from "../model/user.model";
 
 export const getAllUsers = async () => {
     return await User.find();
@@ -11,10 +10,10 @@ export const createUser = async (userData: any) => {
     return await User.create(userData);
 };
 
-export const updateUser = async (id: string, userData: any) => {
-    return await User.findByIdAndUpdate(id, userData, { new: true });
+export const updateUserByEmail = async (email: string, userData: any) => {
+    return await User.findOneAndUpdate({ email }, userData, { new: true });
 };
 
-export const deleteUser = async (id: string) => {
-    return await User.findByIdAndDelete(id);
+export const deleteUserByEmail = async (email: string) => {
+    return await User.findOneAndDelete({ email });
 };

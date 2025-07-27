@@ -1,13 +1,16 @@
 import express from "express";
-import {createUser, deleteUser, getAllUsers, updateUser} from "../service/user.service";
-
+import {
+    getAllUsers,
+    createUser,
+    updateUser,
+    deleteUser,
+} from "../controllers/user.cotroller";
 
 const router = express.Router();
 
-// Admin routes
-router.get("/admin/users", getAllUsers);
-router.post("/admin/users", createUser);
-router.put("/admin/users/:id", updateUser);
-router.delete("/admin/users/:id", deleteUser);
+router.get("/", getAllUsers);
+router.post("/", createUser);
+router.put("/update/:email", updateUser);
+router.delete("/delete/:email", deleteUser);
 
 export default router;
