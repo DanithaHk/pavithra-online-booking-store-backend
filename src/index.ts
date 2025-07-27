@@ -20,7 +20,7 @@ if (!MONGO_URI) {
 mongoose
     .connect(MONGO_URI)
     .then(() => {
-        console.log("✅ MongoDB connected successfully");
+        console.log("MongoDB connected successfully");
         app.listen(PORT, () => {
             console.log(`Server is running at http://localhost:${PORT}`);
         });
