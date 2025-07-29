@@ -7,6 +7,7 @@ import adminRoutes from "./routes/admin.routes";
 import userRoutes from "./routes/user.routes";
 import fileUploadRoutes from "./routes/file.upload.routes";
 import path from "path";
+import orderRoutes from "./routes/order.routes";
 
 const app: Express = express();
 
@@ -33,5 +34,7 @@ app.use("/api/admin",authMiddleware,adminRoutes);
 app.use("/api/admin/users",authMiddleware,userRoutes);
 app.use("/api/admin/book",authMiddleware,bookRoutes);
 app.use("/api/files", fileUploadRoutes,);
+app.use("/api/order", authMiddleware, orderRoutes);
+
 app.use("/uploads/books", express.static(path.join(__dirname, "../uploads/users")));
 export default app;

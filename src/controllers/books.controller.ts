@@ -37,8 +37,9 @@ export const updateBook = async (req: Request, res: Response) => {
 
 export const deleteBook = async (req: Request, res: Response) => {
     try {
-        const name = req.params.name;
-        const deleted = await bookService.deleteBookByName(name);
+        const id = req.params.id;
+        console.log(id)
+        const deleted = await bookService.deleteBookById(id);
         if (!deleted) return res.status(404).json({ message: "Book not found" });
         res.json({ message: "Book deleted" });
     } catch (err) {
