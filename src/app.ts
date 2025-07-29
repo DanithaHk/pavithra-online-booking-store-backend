@@ -5,13 +5,15 @@ import {authMiddleware} from "./middleware/auth.middleware";
 import bookRoutes from "./routes/book.routes";
 import adminRoutes from "./routes/admin.routes";
 import userRoutes from "./routes/user.routes";
+import fileUploadRoutes from "./routes/file.upload.routes";
+import path from "path";
 
 const app: Express = express();
 
 app.use(express.json());
 
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5174", "http://localhost:5173"];
 
 
 const corsOptions = {
@@ -27,9 +29,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/auth", authRoutes);
-app.use("/api/book",authMiddleware, bookRoutes);
 app.use("/api/admin",authMiddleware,adminRoutes);
 app.use("/api/admin/users",authMiddleware,userRoutes);
-
-
+app.use("/api/admin/book",authMiddleware,bookRoutes);
+app.use("/api/files", fileUploadRoutes,);
+app.use("/uploads/books", express.static(path.join(__dirname, "../uploads/users")));
 export default app;

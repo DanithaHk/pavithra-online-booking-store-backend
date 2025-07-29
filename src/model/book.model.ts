@@ -1,13 +1,21 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-const bookSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    author: { type: String },
-    price: { type: Number, required: true },
-    imageUrl: { type: String },
-    category: { type: String },
-    stock: { type: Number, default: 0 },
-    description: { type: String }
+export interface BookData extends Document {
+    title: string;
+    author: string;
+    description?: string;
+    photo?: string;       // store photo filename or URL
+    category?: string;    // new category field
+    price?: number;       // new price field
+}
+
+const BookSchema: Schema = new Schema({
+    title: { type: String },
+    author: { type: String  },
+    description: { type: String },
+    photo: { type: String },
+    category: { type: String },    // optional category
+    price: { type: Number },       // optional price
 });
 
-export const Book = mongoose.model("Book", bookSchema);
+export const Book = mongoose.model<BookData>("Book", BookSchema);

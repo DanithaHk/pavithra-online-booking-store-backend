@@ -4,6 +4,5 @@ export interface BookDto{
     price: number;
     imageUrl: string;
     category: string;
-    stock: number;
     description: string;
 }
