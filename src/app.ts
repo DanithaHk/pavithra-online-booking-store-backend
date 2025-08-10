@@ -33,8 +33,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admin",authMiddleware,adminRoutes);
 app.use("/api/admin/users",authMiddleware,userRoutes);
 app.use("/api/admin/book",authMiddleware,bookRoutes);
+app.use("/api/book/all", bookRoutes);
 app.use("/api/files", fileUploadRoutes,);
 app.use("/api/order", authMiddleware, orderRoutes);
 
-app.use("/uploads/books", express.static(path.join(__dirname, "../uploads/users")));
+/*app.use("/uploads/books", express.static(path.join(__dirname, "../uploads/users")));*/
+app.use("/uploads/books", express.static(path.join(__dirname, "uploads/users")));
+
 export default app;
